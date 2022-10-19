@@ -1,7 +1,5 @@
 using Decimals
 
-print("Enter Base 10 Number: ")
-
 function splitNum(x)
     splitted = split(x,".")
     if length(splitted) > 1
@@ -9,6 +7,16 @@ function splitNum(x)
     end
     return splitted
 end
+
+function returnValue(x)
+    returning = "0"
+    if occursin("..",x)
+        returning = "0"
+    end
+    return returning
+end
+
+print("Enter Base 10 Number: ")
 
 decimalstr = readline()
 fractional = "."
