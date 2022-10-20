@@ -9,7 +9,7 @@ function splitNum(x)
 end
 
 function returnValue(x)
-    returning = "0"
+    returning = x
     if occursin("..",x)
         returning = "0"
     end
