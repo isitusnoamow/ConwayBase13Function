@@ -11,7 +11,27 @@ end
 function returnValue(x)
     returning = x
     if occursin("..",x)
-        returning = "0"
+        splitted = split(x,"..")
+        remaining = splitted[length(splitted)]
+        ending =  ""
+        direction = 0
+        numlength = length(remaining)
+        for i in 0:(numlength - 1)
+            if remaining[numlength - i] == '+'
+                direction = 1
+                break
+            end
+            if remaining[numlength - i] == '-'
+                direction = -1
+                break
+            end
+            ending = remaining[numlength - i] * ending
+        end
+        if length(split(ending,".")) < 3
+            returning = string(decimal(ending) * direction)
+        else
+            returning = "0"
+        end
     end
     return returning
 end
@@ -31,6 +51,8 @@ if length(splitNum(decimalstr)) > 1
 end
 b13integer = string(parse(Int64,splitNum(decimalstr)[1]),base=13)
 b13number = b13integer * fractional
-conwayb13number = replace(b13integer,"a"=>"+","b"=>"-","c"=>".")
+conwayb13number = replace(b13number,"a"=>"+","b"=>"-","c"=>".")
+
 println(b13number)
 println(conwayb13number)
+println(returnValue(conwayb13number))
